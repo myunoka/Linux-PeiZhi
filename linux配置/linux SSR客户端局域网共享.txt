@@ -1,0 +1,36 @@
+linux 安装ssr共享局域网
+apt-get install git build-essential cmake -y
+apt-get install -y libsodium-dev libpcre3 libpcre3-dev libssl-dev
+开始编译SSR
+cd
+ git clone https://github.com/shadowsocksr-backup/shadowsocksr-libev.git 
+cd shadowsocksr-libev 
+sudo ./configure --prefix = / usr / local / shadowsocksR  - disable --documentation 
+sudo make -j4 
+sudo make install
+使用ssr
+sudo mkdir / usr / local / shadowsocksR / conf 
+sudo vi config.json
+{
+    "server":"45.76.101.246",
+    "server_port":10010,
+    "local_port":1080,
+    "password":"guang@2018",
+    "timeout":600,
+    "method":"chacha20",
+    "protocol":"origin",
+    "obfs":"plain",
+    "obfsparam":"" ,
+    "group":"like",
+    "local_address":"172.16.171.199",
+}
+启动 ssr
+/usr/local/shadowsocksR/bin/ss-local -c /usr/local/shadowsocksR/config.json -c是指定配置文件
+/usr/local/shadowsocksR/bin/ss-local -c /usr/local/shadowsocksR/config.json & 加&后台运行程序
+
+
+安装privoxy
+配置privoxy文件
+vim /etc/privoxy/config
+修改listen-address  0.0.0.0:8888  这里的表示允许所以人连接而且端口为8888
+forward-socks5t   /               172.16.171.199:1080 这里表示privoxy 连接主机的ssr1080端口 1080也是我们刚刚修改config.json 里面local_port"的端口号

@@ -1,0 +1,6 @@
+ÄÚÍø£ºfrpc.ini
+server_addr = 45.77.156.243
+server_port = 7000
+ÍâÍø£ºfrps.ini
+[common]
+bind_port = 7000

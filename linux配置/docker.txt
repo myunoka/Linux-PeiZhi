@@ -1,0 +1,45 @@
+ubuntu官网安装docker：
+1：sudo apt-get updat  
+2:sudo apt-get install -y curl 
+3:curl -sSL https://get.docker.com/|sudo sh
+docker 加速器:
+1：curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://8ad7943c.m.daocloud.io
+2：systemctl restart docker
+3：docker run hello-world
+kali安装docker：
+http://blog.csdn.net/u013814153/article/details/53925790
+
+sysctl net.ipv4.ip_forward (查看端口是否转发=1为转发=0没有转发)
+
+docker使用：
+docker run -d -t -i ubuntu  后台运行ubuntu
+ -d 后台运行
+docker run -p 6789:80 -d -t -i xxxx 后台运行docker镜像 并端口转换 -p是自定义转换 -P是随机转换
+docker logs -f 6788xx 查看容器日志
+docker rm -f 678cc22 强行删除容器
+docker rm -f $(docker ps -a -q) 强行删除-aq 里面的所有容器 
+docker ps: 查看当前运行的容器
+docker ps -a:查看所有容器，包括停止的
+docker rmi ID  删除容器镜像（先docker rm 编号    删除正在运行的镜像）
+docker exec -t -i 3915 运行容器编号
+docker exec -t -i 3915 /bin/bash  进入容器编号的目录
+docker tag xxxx 修改镜像名称
+docker run -dti --name centos6.5 46a6067ce627 /bin/bash --name （修改名字）
+ubuntu docker：
+sudo docker run --help查看
+sudo docker run -ti strm/metasploit /bin/bash 进容器//bin/bash 终端的意思
+生产后台运行编号：sudo docker run -ti -d strm/metasploit
+sudo docker stats test 监控容器占用资源
+sudo docker exec -ti  c85a0e9afebd /bin/bash 进入docker容器编号
+docker pause centos 暂停容器暂停状态的容器不会占用 CPU 资源
+docker unpause centos 恢复运行
+docker search metasploit   用search 搜索
+sudo docker commit -p 876bc52db838 备份后的名称  (备份快照正在运行的docker容器)
+sudo docker save -o /home/名称.tar docker名称 (保存打包镜像)
+sudo docker load -i /home/名称.tar (恢复打包好的镜像)
+docker pull strm/metasploit	用pull 安装
+docker exec 591f6a414e77 ls -l exec执行命令
+
+docker update -m 2048m <name> 容器启动后更改cpu或者内存
+
+

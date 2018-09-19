@@ -1,0 +1,13 @@
+docker network ls 查看docker网络
+docker network create test-network 创建docker网络
+docker network inspect test-network 查看docker网络信息
+docker run -itd --name=test --net=test-network ubuntu /bin/bash 使用--net=连接docker网络
+docker run -tid --link=mysql:db ubuntu /bin/bash --link这个参数就是告诉Docker容器需要使用“mysql”容器，并将其别名命名为db
+
+配置容器静态ip：(缺点容器不能ping同宿主机(官方原因))
+docker network create -d macvlan --subnet=172.16.200.0/24 --gateway=172.16.200.254 -o parent=ens33 mynet  配置驱动为macvlan的mynet虚拟网卡
+-d macvlan  创建macvlan网络，使用macvlan网络驱动
+–subnet 指定宿主机所在网段
+–gateway 指定宿主机所在网段网关
+-o parent 继承指定网段的网卡
+docker  run --net=mynet --ip=172.16.200.102 --name=test -itd centos /bin/bash  运行centos容器并配置静态ip

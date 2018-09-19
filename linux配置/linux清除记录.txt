@@ -1,0 +1,9 @@
+清除当前shell的history文件记录
+history -c 清除所有记录
+此时文件是空的
+history -r 将历史命令文件中的命令读入当前历史命令缓冲区（就是说写入历史的命令到文件里）
+这里就把我们当前使用这个shell所输入的命令记录达到清空效果
+
+清空登录记录last命令：echo > /var/log/wtmp
+清空登录错误信息lastb命令：echo > /var/log/btmp
+这样的效果是直接清空。

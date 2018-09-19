@@ -1,0 +1,15 @@
+upgrade是更新软件. (upgrade – 进行一次升级)
+update相当于是检查更新, 其实就是更新软件列表.（update – 取回更新的软件包列表信息）
+apt-get clean #删除以下载的包
+install – 安装新的软件包(注：软件包名称是 libc6 而非 libc6.deb)
+remove – 卸载软件包
+purge – 卸载并清除软件包的配置
+autoremove – 卸载所有自动安装且不再使用的软件包
+dist-upgrade – 发布版升级，见 apt-get(8)
+dselect-upgrade – 根据 dselect 的选择来进行升级
+build-dep – 为源码包配置所需的编译依赖关系
+autoclean – 删除已下载的旧包文件
+check – 核对以确认系统的依赖关系的完整性
+source – 下载源码包文件
+download – 下载指定的二进制包到当前目录
+changelog – 下载指定软件包，并显示其changelog

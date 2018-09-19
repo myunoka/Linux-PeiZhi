@@ -1,0 +1,10 @@
+ettercap：
+打开ettercap 工具
+driftnet -i eth0 //启动eth0网卡监控
+cat /proc/sys/net/ipv4/ip_forward //查看ip转发
+echo 1 > /proc/sys/net/ipv4/ip_forward   #启动IP转发，使得目标主机可以通过你的主机连到网关，否则目标无法上网  0是关闭 1是开启
+
+arpspoof：
+
+leafpad　ＸＸＸ　 以记事本模式打开
+masscan 172.16.223.9 -p 0-65535 --rate 10000 扫描全部端口 rate 发包数量

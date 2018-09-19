@@ -1,0 +1,33 @@
+1、创建库:create 库名
+2、创建表:create table 表名
+3、mysql> create table name(
+    -> id int auto_increment not null primary key ,#设置为主键
+    -> uname char(8),
+    -> gender char(2),
+    -> birthday date );
+Query OK, 0 rows affected (0.03 sec)
+4、查询数据表的结构:desc user;或show create table; 表名 \G（二选一）\G意思是显示结果更加直观。
+5、查询表字段内容：SELECT User, Host, Password FROM mysql.user;
+6、SQL 使用单引号来环绕文本值（大部分数据库系统也接受双引号）。如果是数值，请不要使用引号。文本值：(单引号用来表示字符常量)
+7、在命令行中输入\e 打开一个vi窗口
+8、设置字段不能为空：(字段名 数据类型 NOT NULL)
+9、如果创建表时忘记为id创建主键的时可以用：lter table tb_emp1 add primary key (id) 为tb_emp1 创建主键。
+10、设置多个列为主键：lter table tb_emp1 add primary key (id，name)或者在创建时后面加上PRIMARY KEY(id,name)
+11、使用唯一性约束：就是说某一列或者多列的值不能重复(在后面指定的列后面加上UNIQUE)字段名 数据类型 UNIQUE
+12、使用默认约束：就是指定某列的默认值。（字段名 数据类型 DEFAULT）
+13、设置表的属性自动增加：字段名 数据类型 UTO_INCREMENT (这个意思就是系统自动生成字段的主键值，初始值为1，每次+1，一个表只能有一个UTO_INCREMENT，且该字段必须为主键的一部分)
+14、插入信息到指定的表中的列（字段）
+insert into tb_emp2 (id,name,salary)
+                             values(1,'Lucy',1000),
+                             (2,'Lura',1200),
+                             (3,'Kevin',1500)#注意主键值不能为空
+15、修改数据表语句：ALTER TABLE 
+16、修改表名：ALTER TABLE 旧表名 RENAME 新表名
+17、修改字段的数据类型： ALTER TABLE 表名 MODIFY 字段名 数据类型
+18、修改字段名：ALTER TABLE 表名 CHANGE 旧字段名 新字段名 新数据类型
+19、添加字段：ALTER TABLE 表名 ADD 新字段名 数据类型 [FIRST | AFTER 已存在的字段名]‘FIRST’为可选参数，其作用是将新添加的字段设置为表中第一个字段；‘AFIER’其作用是将新添加的字段指定要“已存在的字段名”后面
+20、添加无完整性约束条件字段：（就是数据Null可为空）：ALTER TABLE 表名 ADD 字段名 数据类型;
+21、添加有完整性约束条件字段：（就是数据Null不能为空）：ALTER TABLE 表名 ADD 字段名 数据类型 not null;
+22、删除字段：ALTET TABLE 表名 DROP 字段名
+23、修改字段的排列位置：ALTER TABLE 表名 字段1 数据类型 FIRST | AFTER 字段2(‘FIRST’为可选参数，其作用是将‘字段1’修改为表中第一个字段；‘AFIER’其作用是将‘字段1’指定到‘字段2’的后门)
+24、更改表的存储引擎： 查看表的引擎名show create table test111 \G	show ENGINES；查看系统支持的存储引擎。修改命令是：ALTER TABLE 表名 ENGINE=更改后的存储引擎名

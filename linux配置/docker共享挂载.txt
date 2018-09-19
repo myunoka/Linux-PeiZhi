@@ -1,0 +1,16 @@
+docker挂载目录到容器
+docker run -dti --name test -v /home/test:/root/123 10.0.3.137:5000/nginx:latest  <把home目录下的test挂载到容器指定的目录。注test没有的话会自动创建>  
+docker容器使用一个共享卷
+docker run -dti -v /root/123 --name test 10.0.3.137:5000/nginx:latest<把容器中的/root/123 文件夹共享出来，可以给其他容器使用>
+docker run -dti --volumes-from test --name test1 10.0.3.137:5000/nginx:latest <使用test容器的共享卷。> -<如果把数据写在共享卷里，就算test共享卷的容器删除了，共享卷的数据还是在test1的容器里，相当容器把共享卷的数据也保存了在test1容器里>
+<--volumes-from用来指定要从哪个数据卷来挂载数据>
+
+cker run -dti --name test -v /home/test:/root/123 10.0.3.137:5000/nginx:latest  <把home目录下的test挂载到容器指定的目录。注test没有的话会自动创建>  
+docker容器使用一个共享卷
+docker run -dti -v /root/123 --name test 10.0.3.137:5000/nginx:latest<把容器中的/root/123 文件夹共享出来，可以给其他容器使用>
+docker run -dti --volumes-from test --name test1 10.0.3.137:5000/nginx:latest <使用test容器的共享卷。> -<如果把数据写在共享卷里，就算test共享卷的容器删除了，共享卷的数据还是在test1的容器里，相当容器把共享卷的数据也保存了在test1容器里>
+注：--volumes-from用来指定挂载哪个容器的共享数据卷
+
+
+
+ospf 添加了全网的ip段  但是没添加管理vlan的ip段。所有如果交换机没添加静态路由的话该交换机的无法远程管理的。。也就是ip route-static 0.0.0.0 0.0.0.0 10.0.0.254
